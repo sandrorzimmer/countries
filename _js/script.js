@@ -18,17 +18,21 @@ function getInfo() {
             let borders     = info[0]["borders"];
             let flag        = info[0]["flag"];
 
-            document.getElementById("country_information").innerHTML = "";
+            document.getElementById("country_information").innerHTML = ""; //Clean previous country
+            document.getElementById("card_title").innerHTML = name;        //Show country name
 
-            writeInformation("Country", "name", name);
+            document.getElementById("flag").setAttribute("src", flag);     //Show country flag
+            document.getElementById("flag").style.display = "block";       //Show country flag
+
             writeInformation("Region", "region", region);
             writeInformation("Native name", "native_name", native_name);
             writeInformation("Capital", "capital", capital);
             writeInformation("Demonym", "demonym", demonym);
             writeInformation("Languages", "languages", languages);
             writeInformation("Currencies", "currencies", currencies);
-
             writeBorders(borders);
+
+            document.getElementById("card").style.display = "block";       //Show country card
         };
     };
     xhttp.open("GET", url + country_name, true);
@@ -69,15 +73,18 @@ function buildNamesSelect() {
 }
 
 function writeInformation(title,list_name,data) {
+    //Create item title
     let node_title = document.createElement("H6");
     let textnode_title = document.createTextNode(title);
     node_title.appendChild(textnode_title);
     document.getElementById("country_information").appendChild(node_title);
 
+    //Create info list
     let node_list = document.createElement("UL");
     node_list.id = title;
     document.getElementById("country_information").appendChild(node_list);
 
+    //If info is an array, create list items
     let data_items = [];
     if (typeof data === "object") {
         for (x = 0; x < data.length; x++) {
@@ -89,6 +96,7 @@ function writeInformation(title,list_name,data) {
             node_list_item.appendChild(textnode_list_item);
             document.getElementById(title).appendChild(node_list_item);
         }
+    //If info is a string, create list item
     } else {
         let node_list_item = document.createElement("LI");
         let textnode_list_item = document.createTextNode(data);
@@ -99,15 +107,18 @@ function writeInformation(title,list_name,data) {
 }
 
 function writeBorders(borders_code_array) {
+    //Create borders title
     let node_title = document.createElement("H6");
     let textnode_title = document.createTextNode("Borders");
     node_title.appendChild(textnode_title);
     document.getElementById("country_information").appendChild(node_title);
 
+    //Create info list
     let node_list = document.createElement("UL");
     node_list.id = "borders_list";
     document.getElementById("country_information").appendChild(node_list);
 
+    //Get each border country (3-letter country code)
     for (let x = 0; x < borders_code_array.length; x++) {
         getNameByCode(borders_code_array[x]);
     };
@@ -124,6 +135,7 @@ function getNameByCode(code) {
         if (this.readyState == 4 && this.status == 200) {
             let info = JSON.parse(xhttp.response);
 
+            //Add a list item, converting 3-letter country code to country name
             let list_item = document.createElement("li");
             let text_item = document.createTextNode(info["name"]);
             list_item.appendChild(text_item);
