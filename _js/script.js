@@ -81,7 +81,8 @@ function writeInformation(title,list_name,data) {
 
     //Create info list
     let node_list = document.createElement("UL");
-    node_list.id = title;
+    node_list.id = list_name;
+    node_list.className = "list-unstyled";
     document.getElementById("country_information").appendChild(node_list);
 
     //If info is an array, create list items
@@ -94,14 +95,14 @@ function writeInformation(title,list_name,data) {
             let node_list_item = document.createElement("LI");
             let textnode_list_item = document.createTextNode(item);
             node_list_item.appendChild(textnode_list_item);
-            document.getElementById(title).appendChild(node_list_item);
+            document.getElementById(list_name).appendChild(node_list_item);
         }
     //If info is a string, create list item
     } else {
         let node_list_item = document.createElement("LI");
         let textnode_list_item = document.createTextNode(data);
         node_list_item.appendChild(textnode_list_item);
-        document.getElementById(title).appendChild(node_list_item);
+        document.getElementById(list_name).appendChild(node_list_item);
     }
     return;
 }
@@ -115,6 +116,7 @@ function writeBorders(borders_code_array) {
 
     //Create info list
     let node_list = document.createElement("UL");
+    node_list.className = "list-unstyled";
     node_list.id = "borders_list";
     document.getElementById("country_information").appendChild(node_list);
 
