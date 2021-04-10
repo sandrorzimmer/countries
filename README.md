@@ -13,7 +13,7 @@
 * License: Mozilla Public License MPL 2.0
 * Version at application development: 2.0.5
 * Used endpoints:
-  * ALL - - Get all information available.
+  * ALL - Get all information available.
     * https://restcountries.eu/rest/v2/all
   * NAME - Search by country name. It can be the native name or partial name.
     * https://restcountries.eu/rest/v2/name/{name}    
