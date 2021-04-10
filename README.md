@@ -1,6 +1,6 @@
 # Countries
 ## Select a country and get information about it.
-### Simple application that fetch data from an RESTful API.<br><br>
+### Simple application that fetches data from an RESTful API.<br><br>
 
 ### Table of contents
 1. [API](#API)
@@ -22,9 +22,9 @@
 
 ### How does the application work?
 There is only a select field. User selects a country from the list and<br>
-a card with the country information is shown.
+a card with country information is shown.
 Behind the curtains, this is what happens:
-* A function gets all the countries names to build the select field.
+* A function gets all the countries' names to build the select field.
 * User selects a country. Then a function searches the info to be shown, including:
   * An image of the country's flag
   * Region
